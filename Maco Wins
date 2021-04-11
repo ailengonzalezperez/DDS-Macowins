@@ -4,3 +4,14 @@
 - Identificar el estado de una prenda
 - Obtener las ganancias de un día determinado
 - Registrar todas las ventas realizadas
+
+
+#Decisiones de diseño
+
+- Para poder hacer uso del polimorfismo, el MedioPago recibe las prendas y las cuotas y luego cada clase (efectivo/tarjeta) sabe cómo calcular ese recargo.
+- El campo "tipo" de la prenda permite darle el nombre. Ej. si está "Saco hilo" y "Saco lana" podemos distinguirlos aunque ambos sean objetos de tipo saco.
+- El estado es capaz de responder el descuento que le hace a una prenda determinada.
+- El monto() de una venta puede calcularse, no es necesario guardarlo como atributo
+- Una venta -> un medio de pago. Si un cliente quiere pagar una parte y una parte, se deberá separar en sistema como 2 ventas separadas.
+
+- Para registrar las ganancias por día se puede pensar en una instancia del objeto Ganancias que tiene el diccionario de todos los montos, con key la fecha y value el importe de ese día. A día cerrado se incorporaría la información al diccionario con incorporarGanancia(). Para esto, generamos la idea de la venta diaria que tiene el listado de las ventas de cada día. ¿Sería necesario guardarlo? Creería que no porque menciona que necesitan las ganancias por día. Si se necesitaran las ventas, en algún caso, podríamos buscar entre todas las que existen.
