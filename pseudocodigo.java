@@ -1,25 +1,27 @@
 public abstract class MedioPago {
-  public abstract int recargo(list prendas,int cuotas);
+  public abstract int recargo(ArrayList prendaslist prendas,int cuotas);
 }
 
 public class Efectivo extends MedioPago{
-  public int recargo(list prendas,int cuotas){
+  public int recargo(ArrayList prendas,int cuotas){
     return 0;
   }  
 }
 
 public class Tarjeta extends MedioPago{
   private int coeficiente;
-  public int recargo(list prendas,int cuotas){
-    int recargoPrendas = sumatoria(forall(map(prendas, getMonto),*0.01)) //Definir código correcto
+  public int recargo(ArrayList prendas,int cuotas){
+    int recargoPrendas = this.prendas.stream().map(Prenda::precio()).sum()*0.01; //A la sumatoria de los precios por prenda lo multiplico por 0.01
+
+
     return cuotas * this.coeficiente + recargoPrendas;
   }  
 }
 
   
 public class Venta {
-  private list prendas;
-  private list cantidades;
+  private ArrayList prendas;
+  private ArrayList cantidades;
   private date fecha;
   private MedioPago metodo;
   
@@ -64,3 +66,25 @@ public class Liquidacion extends Estado{
    return (prenda.precio() * 0.5);
 }
 
+
+  
+public class VentaDiaria {
+  private ArrayList ventas;
+  
+  public int ganaciaDia(){
+    return this.ventas.stream().map(Venta::monto()).sum(); //El valor total es la sumatoria de obtener el monto de cada venta del día
+  }	
+}
+               
+public class Ganancias {
+  private Map<Date, Integer> ganancias = new HashMap<Date, Integer>();
+  
+  public int ganaciaFecha(Date fecha){
+    return (this.ganancias.get(fecha));
+  }	
+  
+  public void incorporarGanancia(Date fecha, int ganancia){
+    this.ganancias.put(fecha, ganancia);
+  }
+  
+}
