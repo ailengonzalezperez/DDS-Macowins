@@ -71,7 +71,7 @@ public class Liquidacion extends Estado{
 public class VentaDiaria {
   private ArrayList ventas;
   
-  public int ganaciaDia(){
+  public int gananciaDia(){
     return this.ventas.stream().map(Venta::monto()).sum(); //El valor total es la sumatoria de obtener el monto de cada venta del día
   }	
 }
@@ -79,7 +79,7 @@ public class VentaDiaria {
 public class Ganancias {
   private Map<Date, Integer> ganancias = new HashMap<Date, Integer>();
   
-  public int ganaciaFecha(Date fecha){
+  public int gananciaFecha(Date fecha){
     return (this.ganancias.get(fecha));
   }	
   
