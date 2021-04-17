@@ -30,20 +30,27 @@ public class Venta {
   }	
 }
 
+//OJO son clases sin comportamiento y eso no está bien :(
+//public class Saco extends Prenda{}
+//public class Camisa extends Prenda{}
+//public class Pantalon extends Prenda{}
+//qué podemos hacer? una alternativa con enum
+
 public abstract class Prenda {
   private Double precio;
   private Estado estadoPrenda;
-  str tipo;
+  //str tipo; esto es polémico porque podría poner cualquier cosa en el string
+  TipoPrenda tipo;
   
   public void precio() {
     return this.precio - this.estadoPrenda.descuentoAplicado(this.precio); //mi precio menos lo que me descuentan
   }
 }
 
-//OJO son clases sin comportamiento y eso no está bien :(
-public class Saco extends Prenda{}
-public class Camisa extends Prenda{}
-public class Pantalon extends Prenda{}
+public enum TipoPrenda{
+  SACO, PANTALON, CAMISA
+}
+
 
 public Interface Estado {
   public abstract int descuentoAplicado(Double precio);
