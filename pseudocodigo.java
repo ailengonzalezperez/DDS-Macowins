@@ -40,28 +40,29 @@ public abstract class Prenda {
   }
 }
 
+//OJO son clases sin comportamiento y eso no está bien :(
 public class Saco extends Prenda{}
 public class Camisa extends Prenda{}
 public class Pantalon extends Prenda{}
 
-public abstract class Estado {
+public Interface Estado {
   public abstract int descuentoAplicado(Prenda prenda);
 }
 
-public class Nueva extends Estado{
+public class Nueva implements Estado{
  public abstract int descuentoAplicado(Prenda prenda){
   return 0;
  }
 }
 
-public class Promocion extends Estado{
+public class Promocion implements Estado{
   private int valorDescuento;
   public abstract int descuentoAplicado(Prenda prenda){
     return this.valorDescuento;
   }
 }
 
-public class Liquidacion extends Estado{
+public class Liquidacion implements Estado{
  public abstract int descuentoAplicado(Prenda prenda){
    return (prenda.precio() * 0.5);
 }
