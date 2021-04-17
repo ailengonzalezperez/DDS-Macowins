@@ -31,12 +31,12 @@ public class Venta {
 }
 
 public abstract class Prenda {
-  private int precio;
+  private Double precio;
   private Estado estadoPrenda;
   str tipo;
   
   public void precio() {
-    return this.precio - this.estadoPrenda.descuentoAplicado(this); //mi precio menos lo que me descuentan
+    return this.precio - this.estadoPrenda.descuentoAplicado(this.precio); //mi precio menos lo que me descuentan
   }
 }
 
@@ -46,24 +46,24 @@ public class Camisa extends Prenda{}
 public class Pantalon extends Prenda{}
 
 public Interface Estado {
-  public abstract int descuentoAplicado(Prenda prenda);
+  public abstract int descuentoAplicado(Double precio);
 }
 
 public class Nueva implements Estado{
- public abstract int descuentoAplicado(Prenda prenda){
+ public abstract int descuentoAplicado(Double precio){
   return 0;
  }
 }
 
 public class Promocion implements Estado{
   private int valorDescuento;
-  public abstract int descuentoAplicado(Prenda prenda){
+  public abstract int descuentoAplicado(Double precio){
     return this.valorDescuento;
   }
 }
 
 public class Liquidacion implements Estado{
- public abstract int descuentoAplicado(Prenda prenda){
+ public abstract int descuentoAplicado(Double precio){
    return (prenda.precio() * 0.5);
 }
 
