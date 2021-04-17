@@ -71,7 +71,7 @@ public class Promocion implements Estado{
 
 public class Liquidacion implements Estado{
  public abstract int descuentoAplicado(Double precio){
-   return (prenda.precio() * 0.5);
+   return (precio * 0.5);
 }
 
 
