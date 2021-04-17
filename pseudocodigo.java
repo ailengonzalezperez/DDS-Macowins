@@ -20,8 +20,8 @@ public class Tarjeta extends MedioPago{
 
   
 public class Venta {
-  private ArrayList prendas;
-  private ArrayList cantidades;
+  private List<Prenda> prendas;
+  private List<Int> cantidades;
   private date fecha;
   private MedioPago metodo;
   
